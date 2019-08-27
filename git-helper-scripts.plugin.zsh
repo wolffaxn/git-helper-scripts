@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 #
 # Copyright (c) 2019 Alexander Wolff <wolffaxn[at]gmail[dot]com>
 
