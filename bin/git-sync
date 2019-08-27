@@ -13,12 +13,12 @@ ORIGIN=${1:-origin}
 UPSTREAM=${2:-upstream}
 BRANCH=${3:-master}
 
-git fetch --prune --tags  ${UPSTREAM}
+git fetch --prune --tags  "${UPSTREAM}"
 if [ "$(git rev-parse --abbrev-ref HEAD)" != "${BRANCH}" ]; then
-  git checkout ${BRANCH}
+  git checkout "${BRANCH}"
 fi
-git rebase ${UPSTREAM}/${BRANCH}
+git rebase "${UPSTREAM}"/"${BRANCH}"
 
-git push --prune ${ORIGIN} ${BRANCH}
-git push --tags ${ORIGIN} ${BRANCH}
+git push --prune "${ORIGIN}" "${BRANCH}"
+git push --tags "${ORIGIN}" "${BRANCH}"
 
