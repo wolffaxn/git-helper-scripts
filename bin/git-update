@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # Updates the current git repository by changing to the default branch,
 # fetching and rebasing the latest changes from remote and removes all
