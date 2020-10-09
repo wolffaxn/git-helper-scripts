@@ -4,11 +4,10 @@
 # fetching and rebasing the latest changes from remote and removes all
 # merged branches.
 #
-# Copyright (c) 2018 Alexander Wolff <wolffaxn[at]gmail[dot]com>
+# Copyright (c) 2018-2020 Alexander Wolff <wolffaxn[at]gmail[dot]com>
 #
 
-set -e
-set -o pipefail
+set -eo pipefail
 
 REMOTE=${1:-origin}
 BRANCH=${2:-master}
@@ -20,4 +19,4 @@ fi
 git rebase "${REMOTE}"/"${BRANCH}"
 
 # delete all merged branches ignoring current, master and develop branch
-git branch --merged | grep -vE "\*|master|develop" | xargs -n 1 git branch -d
+git branch --merged | grep -vE "\*|main|master|develop" | xargs -n 1 git branch -d
