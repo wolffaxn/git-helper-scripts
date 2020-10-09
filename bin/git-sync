@@ -1,13 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # Fetches remote changes from forked repository (upstream) and updates the
 # remote repository (origin).
 #
-# Copyright (c) 2018 Alexander Wolff <wolffaxn[at]gmail[dot]com>
+# Copyright (c) 2018-2020 Alexander Wolff <wolffaxn[at]gmail[dot]com>
 #
 
-set -e
-set -o pipefail
+set -eo pipefail
 
 ORIGIN=${1:-origin}
 UPSTREAM=${2:-upstream}
@@ -17,8 +16,7 @@ git fetch --prune --tags  "${UPSTREAM}"
 if [ "$(git rev-parse --abbrev-ref HEAD)" != "${BRANCH}" ]; then
   git checkout "${BRANCH}"
 fi
-git rebase "${UPSTREAM}"/"${BRANCH}"
+git merge --ff-only "${UPSTREAM}"/"${BRANCH}"
 
 git push --prune "${ORIGIN}" "${BRANCH}"
 git push --tags "${ORIGIN}" "${BRANCH}"
-
